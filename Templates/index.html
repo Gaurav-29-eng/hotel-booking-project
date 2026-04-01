@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking System</title>
+    <style>
+        /* Reset basic formatting */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Full-screen background image */
+        body {
+            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphism effect for the form box */
+        .form-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+            backdrop-filter: blur(10px); /* This makes the background slightly blurry */
+        }
+
+        h2 { text-align: center; color: #222; margin-bottom: 25px; font-weight: 700; letter-spacing: 1px; }
+        
+        label { font-weight: 600; color: #444; display: block; margin-bottom: 8px; font-size: 14px; }
+        
+        /* Styling the input boxes */
+        input, select {
+            width: 100%; padding: 12px; margin-bottom: 20px;
+            border: 1px solid #ccc; border-radius: 8px;
+            font-size: 16px; transition: all 0.3s ease;
+        }
+
+        /* Glowing effect when you click inside a box */
+        input:focus, select:focus { 
+            border-color: #007BFF; 
+            outline: none; 
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.4); 
+        }
+
+        /* Premium gradient button */
+        button {
+            width: 100%; padding: 15px; 
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: white; border: none; border-radius: 8px;
+            font-size: 18px; font-weight: bold; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Button pop effect on hover */
+        button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Book Your Stay</h2>
+        
+        <form action="/submit_booking" method="POST">
+            
+            <label>Full Name</label>
+            <input type="text" name="guest_name" placeholder="e.g., Tejas" required>
+            
+            <label>Check-in Date</label>
+            <input type="date" name="checkin" required>
+            
+            <label>Check-out Date</label>
+            <input type="date" name="checkout" required>
+            
+            <label>Room Type</label>
+            <select name="room_type">
+                <option value="Standard">Standard Room</option>
+                <option value="Deluxe">Deluxe Room</option>
+                <option value="Suite">Luxury Suite</option>
+            </select>
+            
+            <button type="submit">Confirm Booking</button>
+            
+        </form>
+    </div>
+
+</body>
+</html>

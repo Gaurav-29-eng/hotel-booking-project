@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; background-color: #f4f4f9; }
+        .receipt-box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0px 4px 8px gray; }
+        a { text-decoration: none; color: white; background-color: #007BFF; padding: 10px 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="receipt-box">
+        <h2>Booking Successful! 🎉</h2>
+        <p>Thank you, <strong>{{ guest }}</strong>.</p>
+        <p>Your <strong>{{ room }}</strong> has been successfully reserved.</p>
+        <br><br>
+        <a href="/">Go Back</a>
+    </div>
+
+</body>
+</html>
