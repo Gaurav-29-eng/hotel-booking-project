@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request
 import sqlite3
+import os
+
+# Get absolute path for database (needed for Render deployment)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, 'hotel.db')
 
 app = Flask(__name__)
 
 # --- DATABASE SETUP ---
 def init_db():
-    conn = sqlite3.connect('hotel.db')
+    conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS bookings (
@@ -35,7 +40,7 @@ def submit_booking():
     checkout = request.form['checkout']
     room = request.form['room_type']
     
-    conn = sqlite3.connect('hotel.db')
+    conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO bookings (guest_name, checkin, checkout, room_type)
@@ -50,7 +55,7 @@ def submit_booking():
 @app.route('/admin')
 def admin():
     # Open the database and grab ALL records
-    conn = sqlite3.connect('hotel.db')
+    conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM bookings')
     all_bookings = cursor.fetchall() # This fetches everything as a list
